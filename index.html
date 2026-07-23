@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-cms="siteTitle">Mon Entreprise</title>
+  <!-- Tailwind CSS v4 -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Firebase Compat SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="firebase.js"></script>
+  
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans">
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div id="logo-container" data-cms="siteLogo" class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-md overflow-hidden">
+          M
+        </div>
+        <span data-cms="siteTitle" class="font-bold text-xl text-slate-900 tracking-tight">Mon Entreprise</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#hero" class="hover:text-indigo-600 transition">Accueil</a>
+        <a href="#services" class="hover:text-indigo-600 transition">Services</a>
+        <a href="#about" class="hover:text-indigo-600 transition">À Propos</a>
+        <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a data-cms-wa-link href="https://wa.me/261340000000" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-sm px-4 py-2 rounded-xl shadow transition flex items-center gap-2">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section id="hero" class="relative py-20 lg:py-28 bg-gradient-to-br from-indigo-900 via-indigo-800 to-slate-900 text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center lg:text-left grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <span data-cms="siteSlogan" class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/30 text-indigo-200 border border-indigo-400/30 mb-6">
+          ✨ Bienvenue sur Mon Entreprise
+        </span>
+        <h1 data-cms="heroTitle" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+          Solutions sur mesure pour vos besoins
+        </h1>
+        <p data-cms="heroSubtitle" class="text-lg text-indigo-100/90 mb-8 max-w-xl">
+          Hamorona site tahaka izao aho tompoko ataovy Miendrika io amin'i sary io ilay izy tompoko.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+          <a href="#contact" data-cms="heroCta" class="bg-indigo-500 hover:bg-indigo-600 text-white font-semibold px-6 py-3.5 rounded-xl shadow-lg transition">
+            Nous Contacter
+          </a>
+          <a data-cms-wa-link href="https://wa.me/261340000000" target="_blank" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3.5 rounded-xl border border-white/20 backdrop-blur transition flex items-center gap-2">
+            <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+            Discuter sur WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="relative flex justify-center">
+        <div id="hero-img-box" class="w-full max-w-md bg-white/10 border border-white/20 p-8 rounded-3xl shadow-2xl backdrop-blur text-left">
+          <img id="hero-custom-img" data-cms="heroImage" src="" class="hidden w-full h-48 object-cover rounded-2xl mb-6 shadow-md">
+          <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-paper-plane text-indigo-400"></i> Demande rapide
+          </h3>
+          <form id="hero-form" class="space-y-4">
+            <div>
+              <label class="block text-xs font-medium text-indigo-200 mb-1">Votre Nom</label>
+              <input type="text" id="hero-name" required placeholder="Jean Dupont" class="w-full bg-slate-900/50 border border-white/20 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-400">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-indigo-200 mb-1">Numéro de Téléphone</label>
+              <input type="tel" id="hero-phone" required placeholder="+261 34 00 000 00" class="w-full bg-slate-900/50 border border-white/20 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-400">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-indigo-200 mb-1">Message ou Commande</label>
+              <textarea id="hero-msg" rows="3" required placeholder="Décrivez votre besoin..." class="w-full bg-slate-900/50 border border-white/20 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-400"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold py-3 rounded-xl shadow transition flex items-center justify-center gap-2">
+              <i class="fa-brands fa-whatsapp"></i> Envoyer via WhatsApp
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 data-cms="servicesTitle" class="text-3xl font-extrabold text-slate-900 mb-4">Nos Services & Offres</h2>
+      <p data-cms="servicesSubtitle" class="text-slate-600 max-w-2xl mx-auto mb-16">Découvrez tout ce que nous proposons pour vous accompagner au quotidien.</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-slate-50 border border-slate-200 p-8 rounded-2xl text-left hover:shadow-xl transition">
+          <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl font-bold mb-6">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Service Qualité Première</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">Un accompagnement complet et professionnel adapté à vos attentes.</p>
+          <a data-cms-wa-link href="https://wa.me/261340000000" class="text-indigo-600 font-semibold text-sm hover:underline flex items-center gap-2">Commander <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 p-8 rounded-2xl text-left hover:shadow-xl transition">
+          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl font-bold mb-6">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Rapidité & Efficacité</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">Intervention et réponse rapides pour garantir votre satisfaction.</p>
+          <a data-cms-wa-link href="https://wa.me/261340000000" class="text-emerald-600 font-semibold text-sm hover:underline flex items-center gap-2">En savoir plus <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 p-8 rounded-2xl text-left hover:shadow-xl transition">
+          <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl font-bold mb-6">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Garantie & Sécurité</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">Un service fiable en toute sécurité avec support client réactif.</p>
+          <a data-cms-wa-link href="https://wa.me/261340000000" class="text-amber-600 font-semibold text-sm hover:underline flex items-center gap-2">Contact direct <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact" class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <div class="flex justify-center items-center gap-3 text-white text-2xl font-bold">
+        <span data-cms="siteTitle">Mon Entreprise</span>
+      </div>
+      <p data-cms="footerText" class="text-sm text-slate-400 max-w-md mx-auto">
+        Des questions ou besoin d'informations ? Contactez-nous directement via WhatsApp au <strong data-cms="whatsapp" class="text-emerald-400">+261340000000</strong>.
+      </p>
+      <div class="pt-6 border-t border-slate-800 text-xs text-slate-500">
+        &copy; 2026 <span data-cms="siteTitle">Mon Entreprise</span>. Tous droits réservés.
+      </div>
+    </div>
+  </footer>
+
+  <a data-cms-wa-link href="https://wa.me/261340000000" target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-3xl hover:scale-110 transition duration-300">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <div class="fixed bottom-4 left-4 z-50 bg-slate-900/90 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg border border-slate-700 backdrop-blur">✨ Fait avec DEVWEBIA</div>
+
+  <script src="script.js"></script>
+<!-- DEVWEBIA_UPDATED -->
+<script>console.log("Site mis à jour avec succès");</script>
+</body>
+</html>
